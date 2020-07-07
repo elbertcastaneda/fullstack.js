@@ -1,0 +1,20 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-styled-components"
+  ],
+  "ignoreFiles": [
+    "**/*.css",
+    "**/*.json",
+    "**/*.hbs",
+    "**/*.ts",
+    "**/*.js",
+    "**/*.md",
+    "**/*.lock",
+    "node_modules/**/*",
+    "dist/**/*",
+    "coverage/**/*"
+    ],
+  "defaultSeverity": "error"
+}

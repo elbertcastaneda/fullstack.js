@@ -1,0 +1,9 @@
+{
+  "*.+(ts|tsx)": [
+    "eslint --ext '.js,.ts,.tsx' --max-warnings 0 --fix",
+    "jest --bail --findRelatedTests",
+    "jest --config ./jest.integration.config.js --bail --findRelatedTests"
+  ],
+  "*.+(tsx)": ["stylelint"],
+  "*.+(js|json|md)": ["prettier --write"]
+}
