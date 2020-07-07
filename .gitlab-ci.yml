@@ -1,0 +1,31 @@
+image: node:latest
+
+stages:
+  - build
+  - unit_test
+  - integration_test
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  before_script:
+    - apt-get update -qq && apt-get --yes install yarn
+  stage: build
+  script:
+    - yarn install
+  only:
+    - merge_requests
+
+unit_test:
+  stage: unit_test
+  script: yarn run test
+  only:
+    - merge_requests
+
+integration_test:
+  stage: integration_test
+  script: yarn run test:integration
+  only:
+    - merge_requests
