@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
-import RootController from './root.controller';
-import RootService from './root.service';
+import RootController from './react-ssr.controller';
+import RootService from './react-ssr.service';
 import { MyLibraryModule } from '@app/my-library';
 
 @Module({
@@ -9,4 +9,4 @@ import { MyLibraryModule } from '@app/my-library';
   imports: [MyLibraryModule],
   providers: [RootService],
 })
-export default class RootModule {}
+export default class ReactSsrModule {}

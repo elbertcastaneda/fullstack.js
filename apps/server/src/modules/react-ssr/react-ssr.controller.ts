@@ -1,6 +1,6 @@
 import { Controller, Get, Render } from '@nestjs/common';
 
-import RootService from './root.service';
+import RootService from './react-ssr.service';
 import { MyLibraryService } from '@app/my-library';
 
 interface IMessage {
