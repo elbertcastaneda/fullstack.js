@@ -101,7 +101,34 @@ module.exports = {
       rules,
     },
     {
-      files: ['apps/views/**/*.tsx', 'apps/views/**/*.ts', 'apps/**/*.spec.ts'],
+      files: ['apps/views/**/*.tsx', 'apps/views/**/*.ts'],
+      ...base,
+      parserOptions: {
+        project: 'tsconfig.json',
+        sourceType: 'module',
+      },
+      rules,
+    },
+    {
+      files: ['apps/web/**/*.tsx', 'apps/web/**/*.ts'],
+      ...base,
+      parserOptions: {
+        project: 'apps/web/tsconfig.json',
+        sourceType: 'module',
+      },
+      rules,
+    },
+    {
+      files: ['apps/next.views/**/*.tsx', 'apps/next.views/**/*.ts'],
+      ...base,
+      parserOptions: {
+        project: 'apps/next.views/tsconfig.json',
+        sourceType: 'module',
+      },
+      rules,
+    },
+    {
+      files: ['apps/**/*.spec.ts'],
       ...base,
       parserOptions: {
         project: 'tsconfig.json',
@@ -114,7 +141,7 @@ module.exports = {
     'import/resolver': {
       // use an array
       typescript: {
-        directory: ['./tsconfig.json'],
+        directory: ['./tsconfig.json', './apps/server/tsconfig.server.json'],
       },
     },
   },

@@ -6,7 +6,7 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "target": "es2017",
     "sourceMap": true,

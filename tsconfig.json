@@ -3,19 +3,20 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "strict": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "incremental": true,
     "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "baseUrl": "./",
     "paths": {
+      "@server": ["apps/server/src"],
+      "@server/*": ["apps/server/src/*"],
       "@app/my-library": ["libs/my-library/src"],
       "@app/my-library/*": ["libs/my-library/src/*"]
     }

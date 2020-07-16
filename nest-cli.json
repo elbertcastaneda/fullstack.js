@@ -10,7 +10,7 @@
   "projects": {
     "server": {
       "type": "application",
-      "root": "apps/server",
+      "root": "apps/server/src",
       "entryFile": "main",
       "sourceRoot": "apps/server/src",
       "compilerOptions": {
