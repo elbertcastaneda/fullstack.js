@@ -23,4 +23,11 @@ describe('AppController (e2e)', () => {
     expect(status).toBe(200);
     expect(text).toBe('Hello World!');
   });
+
+  it('/message (GET)', async () => {
+    const { status, text } = await request(app.getHttpServer()).get('/message');
+
+    expect(status).toBe(200);
+    expect(text).toBe('Hello from library');
+  });
 });

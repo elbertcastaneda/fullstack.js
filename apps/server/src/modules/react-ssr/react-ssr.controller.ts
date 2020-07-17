@@ -28,6 +28,11 @@ export default class RootController {
     return this.rootService.getHello();
   }
 
+  @Get('message')
+  getMessage(): string {
+    return this.libraryService.getMessage();
+  }
+
   @Get('library')
   @Render('home/index.tsx')
   public showLibraryMessage(): IMessage {
