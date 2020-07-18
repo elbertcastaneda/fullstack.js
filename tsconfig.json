@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
+    "target": "ES5",
     "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",
-    "lib": ["dom", "dom.iterable", "ES2020"],
+    "lib": ["dom", "dom.iterable", "ESNext"],
     "strict": true,
     "allowJs": true,
     "skipLibCheck": true,
@@ -13,6 +13,8 @@
     "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noEmit": false,
+    "outDir": "dist/apps/server/",
     "baseUrl": "./",
     "paths": {
       "@server": ["apps/server/src"],

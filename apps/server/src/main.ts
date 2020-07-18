@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
 import register from '@react-ssr/nestjs-express/register';
-import MainModule from '@server/modules';
+import MainModule from './modules';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(MainModule);

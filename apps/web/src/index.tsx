@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 
 import styled, { darkTheme, ThemeProvider } from './theme';
 import { TaskModel, TaskStatus } from '../../../libs/my-library/src/models/task.model';
@@ -44,8 +44,7 @@ const WebApp = ({ message }: WebAppProps): JSX.Element => {
   const [task, setTask] = useState(defaultTask);
   const [error, setError] = useState('');
   const [tasks, setTasks] = useState([] as TaskModel[]);
-
-  useEffect(() => {
+  const refreshTasks = useCallback(() => {
     fetchTasks()
       .then((data) => {
         setTasks(data);
@@ -54,6 +53,8 @@ const WebApp = ({ message }: WebAppProps): JSX.Element => {
         setError(error_);
       });
   }, []);
+
+  useEffect(refreshTasks, [refreshTasks]);
 
   return (
     <>
@@ -82,18 +83,7 @@ const WebApp = ({ message }: WebAppProps): JSX.Element => {
         >
           Inc ++
         </button>
-        <button
-          type="button"
-          onClick={() => {
-            fetchTasks()
-              .then((data) => {
-                setTasks(data);
-              })
-              .catch((error_: string) => {
-                setError(error_);
-              });
-          }}
-        >
+        <button type="button" onClick={refreshTasks}>
           Refresh
         </button>
         <ul>

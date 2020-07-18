@@ -12,6 +12,7 @@
     "**/*.js",
     "**/*.md",
     "**/*.lock",
+    "**/*.yml",
     "node_modules/**/*",
     "dist/**/*",
     "coverage/**/*"
