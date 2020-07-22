@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react';
 
-import styled, { darkTheme, ThemeProvider } from './theme';
+import styled, { darkTheme, ThemeProvider, applyColor } from './theme';
 import { TaskModel, TaskStatus } from '../../../libs/my-library/src/models/task.model';
 
 const defaultTask: TaskModel = { description: '', id: '', status: '', title: '' };
@@ -10,8 +10,8 @@ interface WebAppProps {
 }
 
 const Quote = styled.h1`
-  background-color: ${(props) => props.theme.colors.background};
-  color: ${(props) => props.theme.colors.primary};
+  background-color: ${applyColor((colors) => colors.background)};
+  color: ${applyColor((colors) => colors.primary)};
   font: 400 36px/1.4 Times, serif, Apple Color Emoji;
   font-style: italic;
   font-weight: normal;

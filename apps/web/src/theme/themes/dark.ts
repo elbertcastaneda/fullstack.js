@@ -2,8 +2,8 @@ import BaseTheme from './base';
 
 const darkTheme: BaseTheme = {
   colors: {
-    background: 'black',
-    primary: 'grey',
+    background: '#282c34',
+    primary: 'lightgray',
   },
 };
 

@@ -1,8 +1,10 @@
+export interface BaseThemeColors {
+  primary: string;
+  background: string;
+}
+
 interface BaseTheme {
-  colors: {
-    primary: string;
-    background: string;
-  };
+  colors: BaseThemeColors;
 }
 
 export default BaseTheme;
