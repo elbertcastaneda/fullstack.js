@@ -4,6 +4,7 @@ import RootService from './react-ssr.service';
 import { MyLibraryService } from '@app/my-library';
 
 interface IMessage {
+  defaultCounter?: number;
   message: string;
 }
 
@@ -19,6 +20,7 @@ export default class RootController {
   @Render('home/index.tsx')
   public showHomePage(): IMessage {
     return {
+      defaultCounter: Math.ceil(Math.random() * 100 + 1),
       message: this.showHomeMessage,
     };
   }

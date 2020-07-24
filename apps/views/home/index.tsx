@@ -4,15 +4,16 @@ import { Head } from '@react-ssr/nestjs-express';
 import WebApp from '../../web/src';
 
 interface IndexProps {
+  defaultCounter: number;
   message: string;
 }
 
-const Index = ({ message }: IndexProps): JSX.Element => (
+const Index = ({ defaultCounter, message }: IndexProps): JSX.Element => (
   <>
     <Head>
       <title>An example of @react-ssr/nestjs-express</title>
     </Head>
-    <WebApp message={message} />
+    <WebApp defaultCounter={defaultCounter} message={message} />
   </>
 );
 

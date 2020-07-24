@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import request from 'supertest';
 
-import TaskModule from '@server/modules/api/tasks';
+import MainModule from '../src/modules';
 import { TaskModel, TaskStatus } from '@app/my-library/models/task.model';
 
 describe('api:TasksController (e2e)', () => {
@@ -11,11 +11,15 @@ describe('api:TasksController (e2e)', () => {
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [TaskModule],
+      imports: [MainModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 
   it('/api/tasks (GET) - Empty collection', async () => {

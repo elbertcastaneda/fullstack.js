@@ -7,6 +7,7 @@ const defaultTask: TaskModel = { description: '', id: '', status: '', title: '' 
 
 interface WebAppProps {
   message: string;
+  defaultCounter: number;
 }
 
 const Quote = styled.h1`
@@ -28,19 +29,10 @@ const Error = styled.pre`
 `;
 
 const fetchTasks = (): Promise<TaskModel[]> =>
-  new Promise((resolve, reject) => {
-    fetch('/api/tasks')
-      .then((response) => response.json())
-      .then((data: TaskModel[]) => {
-        resolve(data);
-      })
-      .catch((error_: Error) => {
-        reject(error_.message);
-      });
-  });
+  fetch('/api/tasks').then((response): TaskModel[] => response.json());
 
-const WebApp = ({ message }: WebAppProps): JSX.Element => {
-  const [counter, setCounter] = useState(0);
+const WebApp = ({ message, defaultCounter = 0 }: WebAppProps): JSX.Element => {
+  const [counter, setCounter] = useState(defaultCounter);
   const [task, setTask] = useState(defaultTask);
   const [error, setError] = useState('');
   const [tasks, setTasks] = useState([] as TaskModel[]);
