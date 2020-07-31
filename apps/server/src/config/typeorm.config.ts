@@ -8,6 +8,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   entities: [Task],
   host: 'localhost',
   keepConnectionAlive: true,
+  migrations: [],
   password: 'changeme',
   port: 5432,
   synchronize: true,
