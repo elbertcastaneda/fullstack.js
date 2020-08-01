@@ -17,11 +17,11 @@
         "tsConfigPath": "tsconfig.json"
       }
     },
-    "my-library": {
+    "common": {
       "type": "library",
-      "root": "libs/my-library",
+      "root": "libs/common",
       "entryFile": "index",
-      "sourceRoot": "libs/my-library/src",
+      "sourceRoot": "libs/common/src",
       "compilerOptions": {
         "tsConfigPath": "tsconfig.json"
       }

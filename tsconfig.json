@@ -19,8 +19,8 @@
     "paths": {
       "@server": ["apps/server/src"],
       "@server/*": ["apps/server/src/*"],
-      "@app/my-library": ["libs/my-library/src"],
-      "@app/my-library/*": ["libs/my-library/src/*"]
+      "@app/common": ["libs/common/src"],
+      "@app/common/*": ["libs/common/src/*"]
     }
   },
   "exclude": [

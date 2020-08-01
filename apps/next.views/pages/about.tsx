@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 import React from 'react';
-import { AboutPage as AboutProperties } from '@app/my-library/dtos/pages';
+import { AboutPage as AboutProperties } from '@app/common/dtos/pages';
 
 // eslint-disable-next-line react/prop-types
 const AboutPage: NextPage<AboutProperties> = ({ message }) => (

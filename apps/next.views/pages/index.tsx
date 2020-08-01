@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import Link from 'next/link';
 // import React from 'react';
 import WebApp from './web';
-import { IndexPage as IndexProperties } from '@app/my-library/dtos/pages';
+import { IndexPage as IndexProperties } from '@app/common/dtos/pages';
 
 // eslint-disable-next-line no-console
 console.log(WebApp);

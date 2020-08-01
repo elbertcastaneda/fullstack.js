@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import ReactSsrController from './react-ssr.controller';
 import RootService from './react-ssr.service';
-import { MyLibraryService } from '@app/my-library';
+import { CommonService } from '@app/common';
 
 describe('ReactSsrController', () => {
   let reactSsrController: ReactSsrController;
@@ -10,7 +10,7 @@ describe('ReactSsrController', () => {
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [ReactSsrController],
-      providers: [RootService, MyLibraryService],
+      providers: [RootService, CommonService],
     }).compile();
 
     reactSsrController = app.get<ReactSsrController>(ReactSsrController);

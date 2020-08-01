@@ -4,7 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import request from 'supertest';
 
 import MainModule from '../src/modules';
-import { TaskModel, TaskStatus } from '@app/my-library/models/task.model';
+import { TaskModel, TaskStatus } from '@app/common/models/task.model';
 
 describe('api:TasksController (e2e)', () => {
   let app: INestApplication;

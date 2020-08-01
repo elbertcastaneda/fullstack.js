@@ -12,8 +12,8 @@ import {
 } from '@nestjs/common';
 import TasksService from './tasks.service';
 import TaskStatusValidationPipe from './pipes/task-status-validation.pipe';
-import { CreateTaskDto, GetTasksFilterDto } from '@app/my-library/dtos/api';
-import { TaskModel, TaskStatus } from '@app/my-library/models/task.model';
+import { CreateTaskDto, GetTasksFilterDto } from '@app/common/dtos/api';
+import { TaskModel, TaskStatus } from '@app/common/models/task.model';
 
 @Controller('api/tasks')
 export default class TasksController {

@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useState } from 'react';
 
 import styled, { darkTheme, ThemeProvider, applyColor } from './theme';
-import { TaskModel, TaskStatus } from '../../../libs/my-library/src/models/task.model';
+import { TaskModel, TaskStatus } from '../../../libs/common/src/models/task.model';
 
 const defaultTask: TaskModel = { description: '', id: '', status: '', title: '' };
 

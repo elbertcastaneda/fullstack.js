@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export default class MyLibraryService {
+export default class CommonService {
   private message = 'Hello from library';
 
   /**

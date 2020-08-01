@@ -1,7 +1,7 @@
 import { Controller, Get, Render } from '@nestjs/common';
 
 import RootService from './react-ssr.service';
-import { MyLibraryService } from '@app/my-library';
+import { CommonService } from '@app/common';
 
 interface IMessage {
   defaultCounter?: number;
@@ -14,7 +14,7 @@ export default class RootController {
 
   readonly showHomeMessage = 'Hello NestJS.';
 
-  constructor(private libraryService: MyLibraryService, private rootService: RootService) {}
+  constructor(private libraryService: CommonService, private rootService: RootService) {}
 
   @Get()
   @Render('home/index.tsx')

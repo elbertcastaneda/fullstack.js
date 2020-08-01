@@ -4,8 +4,8 @@ module.exports = {
   moduleNameMapper: {
     '@server/(.*)': '<rootDir>/apps/server/src/$1',
     '@server': '<rootDir>/apps/server/src',
-    '@app/my-library/(.*)': '<rootDir>/libs/my-library/src/$1',
-    '@app/my-library': '<rootDir>/libs/my-library/src',
+    '@app/common/(.*)': '<rootDir>/libs/common/src/$1',
+    '@app/common': '<rootDir>/libs/common/src',
   },
   rootDir: '.',
   roots: ['<rootDir>/apps/', '<rootDir>/libs/'],
