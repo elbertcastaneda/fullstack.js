@@ -26,6 +26,15 @@ unit_test:
 
 integration_test:
   stage: integration_test
+  services:
+    - name: postgres:latest
+      alias: postgres
   script: yarn run test:integration
   only:
     - merge_requests
+  variables:
+    POSTGRES_DB: taskmanagement_test
+    POSTGRES_USER: postgres
+    POSTGRES_PASSWORD: changeme
+    PGDATA: "/data/postgres"
+    POSTGRES_INITDB_ARGS: "--encoding=UTF8 --data-checksums"
