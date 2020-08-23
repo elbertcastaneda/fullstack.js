@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { uuid } from 'uuidv4';
+import { v4 as uuid } from 'uuid';
 import { CreateTaskDto, GetTasksFilterDto } from '@app/common/dtos/api';
 import { TaskModel, TaskStatus } from '@app/common/models/task.model';
 
