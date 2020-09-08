@@ -5,7 +5,7 @@ import { TaskModel, TaskStatus } from '../../../libs/common/src/models/task.mode
 
 const defaultTask: TaskModel = { description: '', id: '', status: '', title: '' };
 
-interface WebAppProps {
+interface WebAppProperties {
   message: string;
   defaultCounter: number;
 }
@@ -31,7 +31,7 @@ const Error = styled.pre`
 const fetchTasks = (): Promise<TaskModel[]> =>
   fetch('/api/tasks').then((response): TaskModel[] => response.json());
 
-const WebApp = ({ message, defaultCounter = 0 }: WebAppProps): JSX.Element => {
+const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element => {
   const [counter, setCounter] = useState(defaultCounter);
   const [task, setTask] = useState(defaultTask);
   const [error, setError] = useState('');

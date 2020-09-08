@@ -1,10 +1,10 @@
 import { Controller, Get, Render } from '@nestjs/common';
 
-interface AboutProps {
+interface AboutProperties {
   message: string;
 }
 
-export interface IndexProps {
+export interface IndexProperties {
   message: string;
 }
 
@@ -16,13 +16,13 @@ export default class NextController {
 
   @Render('index')
   @Get()
-  public index(): IndexProps {
+  public index(): IndexProperties {
     return { message: this.messageIndex };
   }
 
   @Render('about')
   @Get('about')
-  public about(): AboutProps {
+  public about(): AboutProperties {
     return { message: this.messageAbout };
   }
 }

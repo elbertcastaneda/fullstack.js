@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styled, { lightTheme, ThemeProvider } from './theme';
 
-interface WebAppProps {
+interface WebAppProperties {
   message: string;
 }
 
@@ -19,7 +19,7 @@ const Quote = styled.h1`
   margin: 0 auto;
 `;
 
-const WebApp = ({ message }: WebAppProps): JSX.Element => {
+const WebApp = ({ message }: WebAppProperties): JSX.Element => {
   const [counter, setCounter] = useState(0);
 
   return (

@@ -86,7 +86,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       typescript: {
-        directory: ['./tsconfig.json', './apps/web/tsconfig.json'],
+        project: ['./tsconfig.json', './apps/web/tsconfig.json'],
       },
     },
   },
