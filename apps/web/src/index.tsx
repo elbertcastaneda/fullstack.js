@@ -28,22 +28,21 @@ const Error = styled.pre`
   color: white;
 `;
 
-const fetchTasks = (): Promise<TaskModel[]> =>
-  fetch('/api/tasks').then((response): TaskModel[] => response.json());
+const fetchTasks = () => fetch('/api/tasks').then((response): TaskModel[] => response.json());
 
 const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element => {
   const [counter, setCounter] = useState(defaultCounter);
   const [task, setTask] = useState(defaultTask);
   const [error, setError] = useState('');
   const [tasks, setTasks] = useState([] as TaskModel[]);
-  const refreshTasks = useCallback(() => {
-    fetchTasks()
-      .then((data) => {
-        setTasks(data);
-      })
-      .catch((error_: string) => {
-        setError(error_);
-      });
+  const refreshTasks = useCallback(async () => {
+    try {
+      const fetchedTasks = await fetchTasks();
+
+      setTasks(fetchedTasks);
+    } catch (error_) {
+      setError(error_);
+    }
   }, []);
 
   useEffect(refreshTasks, [refreshTasks]);
