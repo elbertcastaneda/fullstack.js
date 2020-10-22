@@ -27,7 +27,7 @@ unit_test:
 integration_test:
   stage: integration_test
   services:
-    - name: postgres:latest
+    - name: postgres:12-alpine
       alias: postgres
   script: yarn run test:integration
   only:
