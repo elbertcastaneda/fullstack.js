@@ -10,7 +10,6 @@ export class CreateTasks1595567773067 implements MigrationInterface {
       "CREATE TYPE \"task_status_enum\" AS ENUM('OPEN', 'IN_PROGRESS', 'DONE')",
     );
     await queryRunner.query(
-      // eslint-disable-next-line max-len
       'CREATE TABLE "task" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "title" character varying NOT NULL, "description" character varying NOT NULL, "status" "task_status_enum" NOT NULL, CONSTRAINT "PK_fb213f79ee45060ba925ecd576e" PRIMARY KEY ("id"))',
     );
   }
