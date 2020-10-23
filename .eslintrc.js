@@ -59,6 +59,7 @@ module.exports = {
         code: 100,
         tabWidth: 2,
         ignoreRegExpLiterals: true,
+        ignoreStrings: true,
         ignoreUrls: true,
       },
     ],
@@ -67,7 +68,7 @@ module.exports = {
     'no-trailing-spaces': 'error',
     'no-multi-spaces': 'error',
     'prefer-destructuring': ['error', { object: true, array: true }],
-    quotes: ['error', 'single'],
+    quotes: ['error', 'single', { avoidEscape: true }],
     'react/jsx-sort-props': [
       'error',
       {
