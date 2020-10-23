@@ -1,29 +1,24 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-import { resolve } from 'path';
+import path from 'path';
 import { Module } from '@nestjs/common';
 import { RenderModule } from 'nest-next';
 import Next from 'next';
+
 import NextController from './next.controller';
+import NextService from './next.service';
 
-const imports = [];
-
-if (process.env.SSR_TYPE === 'NEXT') {
-  imports.push(
+@Module({
+  controllers: [NextController],
+  imports: [
     RenderModule.forRootAsync(
       Next({
         dev: process.env.NODE_ENV !== 'production',
-        dir: resolve(__dirname, '../../../apps/next.views'),
+        dir: path.resolve(__dirname, '../../../apps/web.next'),
       }),
       {
         viewsDir: '',
       },
     ),
-  );
-}
-
-@Module({
-  controllers: [NextController],
-  imports,
+  ],
+  providers: [NextService],
 })
 export default class NextModule {}

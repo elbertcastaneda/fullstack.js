@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback, useState } from 'react';
 
 import styled, { darkTheme, ThemeProvider, applyColor } from './theme';
-import { TaskModel, TaskStatus } from '../../../libs/common/src/models/task.model';
+import { TaskModel, TaskStatus } from '@app/common/models';
 
 const defaultTask: TaskModel = { description: '', id: '', status: '', title: '' };
 
@@ -48,42 +48,40 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
   useEffect(refreshTasks, [refreshTasks]);
 
   return (
-    <>
-      <ThemeProvider theme={darkTheme}>
-        <p>{message}</p>
-        <a href="/about" title="Hello">
-          Go to the about page.
-        </a>
-        {error ? <Error>{error}</Error> : undefined}
-        <Quote>{counter}</Quote>
-        <Quote>{task.title}</Quote>
-        <Quote>{task.description}</Quote>
-        <Quote>{task.status}</Quote>
-        <button
-          type="button"
-          onClick={() => {
-            const newCounter = counter + 1;
+    <ThemeProvider theme={darkTheme}>
+      <p>{message}</p>
+      <a href="/about" title="Hello">
+        Go to the about page.
+      </a>
+      {error ? <Error>{error}</Error> : undefined}
+      <Quote>{counter}</Quote>
+      <Quote>{task.title}</Quote>
+      <Quote>{task.description}</Quote>
+      <Quote>{task.status}</Quote>
+      <button
+        type="button"
+        onClick={() => {
+          const newCounter = counter + 1;
 
-            setCounter(newCounter);
-            task.description = `react is awesome, ${task.description}`;
-            task.title = `Take react course, ${task.title}`;
-            task.status =
-              task.status === TaskStatus.IN_PROGRESS ? TaskStatus.DONE : TaskStatus.IN_PROGRESS;
-            setTask(task);
-          }}
-        >
-          Inc ++
-        </button>
-        <button type="button" onClick={refreshTasks}>
-          Refresh
-        </button>
-        <ul>
-          {tasks.map((tsk) => {
-            return <li key={tsk.id}>{tsk.title}</li>;
-          })}
-        </ul>
-      </ThemeProvider>
-    </>
+          setCounter(newCounter);
+          task.description = `react is awesome, ${task.description}`;
+          task.title = `Take react course, ${task.title}`;
+          task.status =
+            task.status === TaskStatus.IN_PROGRESS ? TaskStatus.DONE : TaskStatus.IN_PROGRESS;
+          setTask(task);
+        }}
+      >
+        Inc ++
+      </button>
+      <button type="button" onClick={refreshTasks}>
+        Refresh
+      </button>
+      <ul>
+        {tasks.map((tsk) => {
+          return <li key={tsk.id}>{tsk.title}</li>;
+        })}
+      </ul>
+    </ThemeProvider>
   );
 };
 

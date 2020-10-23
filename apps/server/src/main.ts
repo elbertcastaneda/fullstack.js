@@ -1,20 +1,17 @@
+import path from 'path';
+import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
-
-import register from '@react-ssr/nestjs-express/register';
 import MainModule from './modules';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(MainModule);
 
-  if (!(process.env.SSR_TYPE === 'NEXT')) {
-    await register(app);
-  }
-
   app.setViewEngine('hbs');
+  app.setBaseViewsDir(path.join(__dirname, 'views'));
+
   await app.listen(3000, () => {
-    // eslint-disable-next-line no-console
-    console.log('> Ready on http://localhost:3000');
+    Logger.debug('> Ready on http://localhost:3000');
   });
 }
 

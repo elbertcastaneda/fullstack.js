@@ -1,20 +1,18 @@
 import { INestApplication } from '@nestjs/common';
-import { Test, TestingModule } from '@nestjs/testing';
-
 import request from 'supertest';
 
-import MainModule from '../src/modules';
+import createTestingModule from './utils/create-testing-module';
+import TasksModule from '@server/modules/api/tasks';
 import { TaskModel, TaskStatus } from '@app/common/models/task.model';
 
 describe('api:TasksController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [MainModule],
-    }).compile();
+    const moduleFixture = await createTestingModule({ imports: [TasksModule] });
 
     app = moduleFixture.createNestApplication();
+
     await app.init();
   });
 

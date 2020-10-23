@@ -1,12 +1,8 @@
-/* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
 import { NextPage } from 'next';
 import Link from 'next/link';
-// import React from 'react';
-import WebApp from './web';
+import WebApp from '@app/web';
 import { IndexPage as IndexProperties } from '@app/common/dtos/pages';
-
-// eslint-disable-next-line no-console
-console.log(WebApp);
 
 // eslint-disable-next-line react/prop-types
 const IndexPage: NextPage<IndexProperties> = ({ message }) => (
@@ -21,12 +17,7 @@ const IndexPage: NextPage<IndexProperties> = ({ message }) => (
   </div>
 );
 
-IndexPage.getInitialProps = (context) => {
-  if (context.req) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return (context.query as unknown) as IndexProperties;
-  }
-
+IndexPage.getInitialProps = () => {
   return { message: 'from client' };
 };
 

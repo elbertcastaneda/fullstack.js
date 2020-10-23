@@ -1,21 +1,23 @@
 module.exports = {
   env: {
+    browser: true,
     node: true,
     jest: true,
   },
   extends: [
     'airbnb-typescript',
     'airbnb/hooks',
-    'plugin:jest/recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:prettier/recommended',
-    'plugin:react/recommended',
-    'plugin:unicorn/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
+    'plugin:jest/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:prettier/recommended',
+    'plugin:react/recommended',
+    'plugin:unicorn/recommended',
     'prettier',
     'prettier/react',
     'prettier/@typescript-eslint',
@@ -25,10 +27,11 @@ module.exports = {
     'dist',
     'coverage',
     'node_modules',
-    'ssr.config.js',
     'jest.config.js',
     'jest.integration.config.js',
     '.eslintrc.js',
+    '.eslintrc.js',
+    'apps/web.next/next.config.js',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -46,9 +49,9 @@ module.exports = {
   ],
   root: true,
   rules: {
-    // '@typescript-eslint/interface-name-prefix': 'off',
+    // Use our .prettierrc file as source
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     '@typescript-eslint/explicit-function-return-type': 'off',
-    // '@typescript-eslint/no-explicit-any': 'off',
     'key-spacing': ['error', { mode: 'strict' }],
     'max-len': [
       'error',
@@ -82,12 +85,20 @@ module.exports = {
     'sort-keys': ['error', 'asc', { caseSensitive: true, natural: false, minKeys: 2 }],
     'space-infix-ops': 'error',
     'unicorn/prevent-abbreviations': ['error', { whitelist: { props: true } }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/test/utils/*.ts', '**/*spec.ts'] },
+    ],
   },
   settings: {
     'import/resolver': {
       typescript: {
-        project: ['./tsconfig.json', './apps/web/tsconfig.json'],
+        project: ['./tsconfig.json', './apps/server/tsconfig.json', './apps/web/tsconfig.json'],
       },
+    },
+    react: {
+      // Automatically detect the react version
+      version: 'detect',
     },
   },
 };
