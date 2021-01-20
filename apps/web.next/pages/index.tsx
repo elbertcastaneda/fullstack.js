@@ -13,7 +13,7 @@ const IndexPage: NextPage<IndexProperties> = ({ message }) => (
         <a href="/about">About us</a>
       </Link>
     </p>
-    <WebApp message={message} />
+    <WebApp defaultCounter={Math.floor(Math.random() * 100)} message={message} />
   </div>
 );
 

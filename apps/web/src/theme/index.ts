@@ -5,7 +5,7 @@ import { BaseTheme, BaseThemeColors, darkTheme, lightTheme } from './themes';
 const {
   default: styled,
   css,
-  injectGlobal,
+  createGlobalStyle,
   keyframes,
   ThemeProvider,
 } = styledComponents as styledComponents.ThemedStyledComponentsModule<BaseTheme>;
@@ -27,7 +27,7 @@ export default styled;
 export {
   css,
   darkTheme,
-  injectGlobal,
+  createGlobalStyle,
   keyframes,
   lightTheme,
   ThemeProvider,

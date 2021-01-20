@@ -32,6 +32,7 @@
     ".eslintrc.js",
     "jest.config.js",
     "jest.integration.config.js",
-    "apps/web.next/next.config.js"
+    "apps/web.next/next.config.js",
+    "apps/web.next/.next"
   ]
 }

@@ -3,11 +3,11 @@ import React, { useEffect, useCallback, useState } from 'react';
 import styled, { darkTheme, ThemeProvider, applyColor } from './theme';
 import { TaskModel, TaskStatus } from '@app/common/models';
 
-const defaultTask: TaskModel = { description: '', id: '', status: '', title: '' };
+const defaultTask: TaskModel = { description: '', id: '', status: TaskStatus.OPEN, title: '' };
 
 interface WebAppProperties {
   message: string;
-  defaultCounter: number;
+  defaultCounter?: number;
 }
 
 const Quote = styled.h1`
@@ -28,7 +28,8 @@ const Error = styled.pre`
   color: white;
 `;
 
-const fetchTasks = () => fetch('/api/tasks').then((response): TaskModel[] => response.json());
+const fetchTasks = () =>
+  fetch('/api/tasks').then((response): Promise<TaskModel[]> => response.json());
 
 const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element => {
   const [counter, setCounter] = useState(defaultCounter);
@@ -45,7 +46,10 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
     }
   }, []);
 
-  useEffect(refreshTasks, [refreshTasks]);
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    refreshTasks();
+  }, [refreshTasks]);
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -61,7 +65,7 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
       <button
         type="button"
         onClick={() => {
-          const newCounter = counter + 1;
+          const newCounter = (counter ?? 0) + 1;
 
           setCounter(newCounter);
           task.description = `react is awesome, ${task.description}`;
@@ -83,6 +87,10 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
       </ul>
     </ThemeProvider>
   );
+};
+
+WebApp.defaultProps = {
+  defaultCounter: 0,
 };
 
 export default WebApp;
