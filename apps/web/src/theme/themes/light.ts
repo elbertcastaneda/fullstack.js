@@ -1,6 +1,6 @@
-import BaseTheme from './base';
+import { DefaultTheme } from 'styled-components';
 
-const lightTheme: BaseTheme = {
+const lightTheme: DefaultTheme = {
   colors: {
     background: 'white',
     primary: 'orange',

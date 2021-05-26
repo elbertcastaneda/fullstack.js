@@ -19,9 +19,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:unicorn/recommended',
     'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
-    'prettier/unicorn',
   ],
   ignorePatterns: [
     'dist',
@@ -85,7 +82,9 @@ module.exports = {
     'import/newline-after-import': ['error', { count: 1 }],
     'sort-keys': ['error', 'asc', { caseSensitive: true, natural: false, minKeys: 2 }],
     'space-infix-ops': 'error',
-    'unicorn/prevent-abbreviations': ['error', { whitelist: { props: true } }],
+    'unicorn/prefer-module': 'off',
+    'unicorn/prefer-node-protocol': 'off',
+    // 'unicorn/prevent-abbreviations': ['error', { whitelist: { props: true } }],
     'import/no-extraneous-dependencies': [
       'error',
       { devDependencies: ['**/test/utils/*.ts', '**/*spec.ts'] },

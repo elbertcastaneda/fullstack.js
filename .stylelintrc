@@ -1,8 +1,9 @@
 {
-  "processors": ["stylelint-processor-styled-components"],
+  "defaultSeverity": "error",
   "extends": [
     "stylelint-config-standard",
-    "stylelint-config-styled-components"
+    "stylelint-config-styled-components",
+    "stylelint-prettier/recommended"
   ],
   "ignoreFiles": [
     "**/*.css",
@@ -16,6 +17,29 @@
     "node_modules/**/*",
     "dist/**/*",
     "coverage/**/*"
-    ],
-  "defaultSeverity": "error"
+  ],
+  "plugins": [
+    "stylelint-csstree-validator",
+    "stylelint-prettier",
+    "stylelint-order"
+  ],
+  "processors": ["stylelint-processor-styled-components"],
+  "rules": {
+    "at-rule-no-unknown": true,
+    "declaration-block-no-duplicate-properties": true,
+    "color-no-invalid-hex": true,
+    "csstree/validator": true,
+    "length-zero-no-unit": true,
+    "order/order": [
+			"custom-properties",
+			"declarations"
+		],
+		"order/properties-order": [
+			"width",
+			"height"
+		],
+    "prettier/prettier": true,
+    "property-no-unknown": true,
+    "unit-no-unknown": true
+  }
 }

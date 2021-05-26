@@ -16,7 +16,6 @@ const Quote = styled.h1`
   font: 400 36px/1.4 Times, serif, Apple Color Emoji;
   font-style: italic;
   font-weight: normal;
-  text-align: left;
   text-align: center;
   max-width: 800px;
   width: 90%;
@@ -24,7 +23,7 @@ const Quote = styled.h1`
 `;
 
 const Error = styled.pre`
-  background-color: '#e02460';
+  background-color: #e02460;
   color: white;
 `;
 
@@ -82,7 +81,11 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
       </button>
       <ul>
         {tasks.map((tsk) => {
-          return <li key={tsk.id}>{tsk.title}</li>;
+          return (
+            <li key={tsk.id}>
+              {tsk.title}(<b>{tsk.description}</b>)
+            </li>
+          );
         })}
       </ul>
     </ThemeProvider>

@@ -1,5 +1,5 @@
-import * as styledComponents from 'styled-components';
-import { BaseTheme, BaseThemeColors, darkTheme, lightTheme } from './themes';
+import * as sc from 'styled-components';
+import { darkTheme, lightTheme } from './themes';
 
 // eslint-disable-next-line @typescript-eslint/unbound-method
 const {
@@ -8,20 +8,26 @@ const {
   createGlobalStyle,
   keyframes,
   ThemeProvider,
-} = styledComponents as styledComponents.ThemedStyledComponentsModule<BaseTheme>;
+} = sc as sc.ThemedStyledComponentsModule<sc.DefaultTheme>;
 
 interface ThemeProviderProperties {
-  theme: BaseTheme;
+  theme: sc.DefaultTheme;
 }
-declare type SelectorColorCallback = (color: BaseThemeColors) => string;
-declare type SelectorThemeCallback = (theme: BaseTheme) => string;
+declare type SelectorColorCallback = (color: sc.BaseThemeColors) => string;
+declare type SelectorThemeCallback = (theme: sc.DefaultTheme) => string;
 
-const selectTheme = (props: ThemeProviderProperties): BaseTheme => props.theme;
-const selectColors = (props: ThemeProviderProperties): BaseThemeColors => selectTheme(props).colors;
-const applyTheme = (selector: SelectorThemeCallback) => (props: ThemeProviderProperties): string =>
-  selector(selectTheme(props));
-const applyColor = (selector: SelectorColorCallback) => (props: ThemeProviderProperties): string =>
-  selector(selectColors(props));
+const selectTheme = (properties: ThemeProviderProperties): sc.DefaultTheme => properties.theme;
+const selectColors = (properties: ThemeProviderProperties): sc.BaseThemeColors => {
+  return selectTheme(properties).colors;
+};
+const applyTheme =
+  (selector: SelectorThemeCallback) =>
+  (properties: ThemeProviderProperties): string =>
+    selector(selectTheme(properties));
+const applyColor =
+  (selector: SelectorColorCallback) =>
+  (properties: ThemeProviderProperties): string =>
+    selector(selectColors(properties));
 
 export default styled;
 export {

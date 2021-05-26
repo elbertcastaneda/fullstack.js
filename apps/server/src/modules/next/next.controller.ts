@@ -10,7 +10,7 @@ export interface IndexProperties {
   message: string;
 }
 
-@Controller('')
+@Controller()
 export default class NextController {
   readonly aboutPageMessage = 'About Page.';
 
@@ -21,7 +21,7 @@ export default class NextController {
   constructor(private nextService: NextService) {}
 
   @Render('index')
-  @Get('')
+  @Get()
   public index(): IndexProperties {
     return { message: this.messageIndex };
   }

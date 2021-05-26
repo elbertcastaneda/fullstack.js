@@ -54,7 +54,7 @@ MyDocument.getInitialProps = async (context: DocumentContext) => {
   context.renderPage = () =>
     originalRenderPage({
       // eslint-disable-next-line react/jsx-props-no-spreading
-      enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+      enhanceApp: (App) => (properties) => sheet.collectStyles(<App {...properties} />),
     });
 
   const initialProperties = await Document.getInitialProps(context);

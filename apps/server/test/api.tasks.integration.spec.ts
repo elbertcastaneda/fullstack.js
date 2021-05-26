@@ -21,11 +21,11 @@ describe('api:TasksController (e2e)', () => {
   });
 
   it('/api/tasks (GET) - Empty collection', async () => {
-    const response = await request(app.getHttpServer()).get('/api/tasks');
-    const { status } = response;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const { body, status } = await request(app.getHttpServer()).get('/api/tasks');
 
     expect(status).toBe(200);
-    expect(response.body).toStrictEqual([]);
+    expect(body).toStrictEqual([]);
   });
 
   it('/api/tasks (POST) - Default status', async () => {
@@ -34,9 +34,9 @@ describe('api:TasksController (e2e)', () => {
       title: 'React is the best',
     };
 
-    const response = await request(app.getHttpServer()).post('/api/tasks').send(task);
-    const { status } = response;
-    const newTask = response.body as TaskModel;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    const { body, status } = await request(app.getHttpServer()).post('/api/tasks').send(task);
+    const newTask = body as TaskModel;
 
     expect(status).toBe(201);
     expect(newTask.description).toBe(task.description);
