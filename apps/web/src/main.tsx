@@ -15,7 +15,7 @@ const Quote = styled.h1`
   color: ${applyColor((colors) => colors.primary)};
   font: 400 36px/1.4 Times, serif, Apple Color Emoji;
   font-style: italic;
-  font-weight: normal;
+  font-weight: 500;
   text-align: center;
   max-width: 800px;
   width: 90%;

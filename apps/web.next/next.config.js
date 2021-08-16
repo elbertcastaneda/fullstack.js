@@ -3,9 +3,7 @@ const { join } = require('path');
 const workspace = join(__dirname, '../../');
 
 module.exports = {
-  future: {
-    webpack5: true,
-  },
+  webpack5: true,
   webpack: (config, options) => {
     config.module = {
       ...config.module,

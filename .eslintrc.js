@@ -84,7 +84,7 @@ module.exports = {
     'space-infix-ops': 'error',
     'unicorn/prefer-module': 'off',
     'unicorn/prefer-node-protocol': 'off',
-    // 'unicorn/prevent-abbreviations': ['error', { whitelist: { props: true } }],
+    'unicorn/prevent-abbreviations': ['error', { checkFilenames: false }],
     'import/no-extraneous-dependencies': [
       'error',
       { devDependencies: ['**/test/utils/*.ts', '**/*spec.ts'] },
