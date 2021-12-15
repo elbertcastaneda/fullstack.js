@@ -28,7 +28,6 @@
     "at-rule-no-unknown": true,
     "declaration-block-no-duplicate-properties": true,
     "color-no-invalid-hex": true,
-    "csstree/validator": true,
     "length-zero-no-unit": true,
     "order/order": [
 			"custom-properties",

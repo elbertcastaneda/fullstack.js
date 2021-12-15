@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -62,7 +62,7 @@ MyDocument.getInitialProps = async (context: DocumentContext) => {
   return {
     ...initialProperties,
     // Styles fragment is rendered after the app and page rendering finish.
-    styles: [...React.Children.toArray(initialProperties.styles), sheet.getStyleElement()],
+    styles: [...Children.toArray(initialProperties.styles), sheet.getStyleElement()],
   };
 };
 
@@ -81,7 +81,7 @@ MyDocument.getInitialProps = async (context: DocumentContext) => {
 
 //     return {
 //       ...restProperties,
-//       styles: [...React.Children.toArray(styles), sheet.getStyleElement()],
+//       styles: [...Children.toArray(styles), sheet.getStyleElement()],
 //     };
 //   } finally {
 //     sheet.seal();

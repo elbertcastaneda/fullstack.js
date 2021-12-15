@@ -13,13 +13,16 @@ interface WebAppProperties {
 const Quote = styled.h1`
   background-color: ${applyColor((colors) => colors.background)};
   color: ${applyColor((colors) => colors.primary)};
-  font: 400 36px/1.4 Times, serif, Apple Color Emoji;
   font-style: italic;
   font-weight: 500;
   text-align: center;
   max-width: 800px;
   width: 90%;
   margin: 0 auto;
+`;
+
+const Description = styled.b`
+  color: pink;
 `;
 
 const Error = styled.pre`
@@ -35,6 +38,7 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
   const [task, setTask] = useState(defaultTask);
   const [error, setError] = useState('');
   const [tasks, setTasks] = useState([] as TaskModel[]);
+
   const refreshTasks = useCallback(async () => {
     try {
       const fetchedTasks = await fetchTasks();
@@ -67,8 +71,8 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
           const newCounter = (counter ?? 0) + 1;
 
           setCounter(newCounter);
-          task.description = `react is awesome, ${task.description}`;
-          task.title = `Take react course, ${task.title}`;
+          task.description = `react is awesome, ${newCounter}`;
+          task.title = `Take react course, ${newCounter}`;
           task.status =
             task.status === TaskStatus.IN_PROGRESS ? TaskStatus.DONE : TaskStatus.IN_PROGRESS;
           setTask(task);
@@ -83,7 +87,7 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
         {tasks.map((tsk) => {
           return (
             <li key={tsk.id}>
-              {tsk.title}(<b>{tsk.description}</b>)
+              {tsk.title}(<Description>{tsk.description}</Description>)
             </li>
           );
         })}

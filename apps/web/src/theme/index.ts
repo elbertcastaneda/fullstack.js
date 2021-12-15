@@ -1,5 +1,4 @@
 import * as sc from 'styled-components';
-import { darkTheme, lightTheme } from './themes';
 
 // eslint-disable-next-line @typescript-eslint/unbound-method
 const {
@@ -30,13 +29,6 @@ const applyColor =
     selector(selectColors(properties));
 
 export default styled;
-export {
-  css,
-  darkTheme,
-  createGlobalStyle,
-  keyframes,
-  lightTheme,
-  ThemeProvider,
-  applyColor,
-  applyTheme,
-};
+export { css, createGlobalStyle, keyframes, ThemeProvider, applyColor, applyTheme };
+
+export { darkTheme, lightTheme } from './themes';
