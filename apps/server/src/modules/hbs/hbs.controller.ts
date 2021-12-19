@@ -8,7 +8,7 @@ interface IMessage {
   message: string;
 }
 
-@Controller('hbs')
+@Controller()
 export default class HbsController {
   readonly aboutPageMessage = 'About Page.';
 

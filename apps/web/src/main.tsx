@@ -36,7 +36,7 @@ const fetchTasks = () =>
 const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element => {
   const [counter, setCounter] = useState(defaultCounter);
   const [task, setTask] = useState(defaultTask);
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [tasks, setTasks] = useState([] as TaskModel[]);
 
   const refreshTasks = useCallback(async () => {
@@ -44,8 +44,8 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
       const fetchedTasks = await fetchTasks();
 
       setTasks(fetchedTasks);
-    } catch (error_) {
-      setError(error_);
+    } catch (error) {
+      setErrorMessage(error);
     }
   }, []);
 
@@ -54,33 +54,35 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
     refreshTasks();
   }, [refreshTasks]);
 
+  const handleClickIncButtom = () => {
+    const newCounter = (counter ?? 0) + 1;
+
+    setCounter(newCounter);
+
+    task.description = `react is awesome, ${newCounter}`;
+    task.title = `Take react course, ${newCounter}`;
+    task.status = task.status === TaskStatus.IN_PROGRESS ? TaskStatus.DONE : TaskStatus.IN_PROGRESS;
+
+    setTask(task);
+  };
+
+  const handleClickRefreshButton = () => refreshTasks();
+
   return (
     <ThemeProvider theme={darkTheme}>
       <p>{message}</p>
       <a href="/about" title="Hello">
         Go to the about page.
       </a>
-      {error ? <Error>{error}</Error> : undefined}
+      {errorMessage ? <Error>{errorMessage}</Error> : undefined}
       <Quote>{counter}</Quote>
       <Quote>{task.title}</Quote>
       <Quote>{task.description}</Quote>
       <Quote>{task.status}</Quote>
-      <button
-        type="button"
-        onClick={() => {
-          const newCounter = (counter ?? 0) + 1;
-
-          setCounter(newCounter);
-          task.description = `react is awesome, ${newCounter}`;
-          task.title = `Take react course, ${newCounter}`;
-          task.status =
-            task.status === TaskStatus.IN_PROGRESS ? TaskStatus.DONE : TaskStatus.IN_PROGRESS;
-          setTask(task);
-        }}
-      >
+      <button type="button" onClick={handleClickIncButtom}>
         Inc ++
       </button>
-      <button type="button" onClick={refreshTasks}>
+      <button type="button" onClick={handleClickRefreshButton}>
         Refresh
       </button>
       <ul>
