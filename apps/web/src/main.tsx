@@ -1,6 +1,8 @@
 import React, { useEffect, useCallback, useState } from 'react';
 
-import styled, { darkTheme, ThemeProvider, applyColor } from './theme';
+import { DefaultTheme } from 'styled-components';
+
+import styled, { darkTheme, lightTheme, ThemeProvider, applyColor } from './theme';
 import { TaskModel, TaskStatus } from '@app/common/models';
 
 const defaultTask: TaskModel = { description: '', id: '', status: TaskStatus.OPEN, title: '' };
@@ -33,10 +35,23 @@ const Error = styled.pre`
 const fetchTasks = () =>
   fetch('/api/tasks').then((response): Promise<TaskModel[]> => response.json());
 
+enum TypesTheme {
+  LIGHT = 'light',
+  DARK = 'DARK',
+}
+
+type ThemesAvailable = Record<TypesTheme.LIGHT | TypesTheme.DARK, DefaultTheme>;
+
+const Themes: ThemesAvailable = {
+  [TypesTheme.LIGHT]: lightTheme,
+  [TypesTheme.DARK]: darkTheme,
+};
+
 const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element => {
   const [counter, setCounter] = useState(defaultCounter);
   const [task, setTask] = useState(defaultTask);
   const [errorMessage, setErrorMessage] = useState('');
+  const [theme, setTheme] = useState(TypesTheme.DARK);
   const [tasks, setTasks] = useState([] as TaskModel[]);
 
   const refreshTasks = useCallback(async () => {
@@ -69,7 +84,7 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
   const handleClickRefreshButton = () => refreshTasks();
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={Themes[theme]}>
       <p>{message}</p>
       <a href="/about" title="Hello">
         Go to the about page.
@@ -85,6 +100,14 @@ const WebApp = ({ message, defaultCounter = 0 }: WebAppProperties): JSX.Element 
       <button type="button" onClick={handleClickRefreshButton}>
         Refresh
       </button>
+      <div>
+        <button type="button" onClick={() => setTheme(TypesTheme.LIGHT)}>
+          Use Light Theme
+        </button>
+        <button type="button" onClick={() => setTheme(TypesTheme.DARK)}>
+          Use Dark Theme
+        </button>
+      </div>
       <ul>
         {tasks.map((tsk) => {
           return (
